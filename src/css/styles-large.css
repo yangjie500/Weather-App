@@ -1,0 +1,88 @@
+@media screen and (min-width: 800px) {
+  body {
+    height: 100vh;
+  }
+  /* NavBar */
+  .nav__title {
+    font-size: 3rem;
+    margin-bottom: 0;
+  }
+
+  .nav > form {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav label {
+    display: block;
+  }
+
+  .nav input {
+    margin-left : 2em;
+  }
+
+  /* breakpoint */
+  .large-screen {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 3fr 1fr;
+    height: 80%;
+
+  }
+
+  .large-screen-btn-container {
+    visibility: visible;
+  }
+
+  .today-description {
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+  }
+
+  .hourly-forecast,
+  .daily-forecast {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  .hourly-forecast.activated{
+    position: static;
+    visibility: visible;
+    grid-row: 2 / 3;
+    grid-column: 1 / 4;
+  }
+
+  .daily-forecast.activated {
+    position: static;
+    visibility: visible;
+    grid-row: 2 / 3;
+    grid-column: 1 / 4;
+  }
+
+  /* Hourly forecast */
+  .hourly-forecast::-webkit-scrollbar {
+    display:unset;
+  }
+
+  /* daily forecast format */
+  .daily-forecast {
+    display: flex;
+    flex-direction: row;
+    
+  }
+
+  .daily {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+
+  }
+
+  /* Button to switch between daily and hourly */
+  .large-screen-btn-switch {
+    position: absolute;
+    
+  }
+
+
+}
