@@ -9,16 +9,16 @@ export default class switchDOM {
     this.dailyDOM = document.querySelector(".daily-forecast") as HTMLDivElement;
   }
 
-  linkEvent() {
+  linkEvent(): void {
     this.switchBtn.addEventListener("click", this.switch.bind(this));
   }
 
-  switch() {
+  switch(): void {
     this._changeText();
     this._changeDisplay();
   }
 
-  private _changeText() {
+  private _changeText(): void {
     if (this.switchBtn.textContent === "Daily") {
       this.switchBtn.textContent = "Hourly";
     } else {
@@ -26,7 +26,7 @@ export default class switchDOM {
     }
   }
 
-  private _changeDisplay() {
+  private _changeDisplay(): void {
     this.hourlyDOM.classList.toggle("activated");
     this.dailyDOM.classList.toggle("activated");
   }
