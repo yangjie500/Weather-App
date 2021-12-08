@@ -17,7 +17,7 @@ export default class inputDOM {
     const inputDetails = this._getInputData();
     this._resetInput();
 
-    PubSub.publish(this.TOPIC, inputDetails);
+    PubSub.publishSync(this.TOPIC, inputDetails);
   }
 
   private _getInputData(): string {

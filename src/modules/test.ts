@@ -13,7 +13,7 @@ export default function testing() {
     dollar: object;
   }
 
-  interface arr {
+  interface arrObj {
     type: string;
     count: number;
   }
@@ -22,7 +22,7 @@ export default function testing() {
 
   console.log(obj);
 
-  const { dollar } = obj;
+  const { dollar }: Part = obj; // not : arrObj[]
 
   console.log(dollar);
 }
