@@ -7,8 +7,9 @@ import PubSub from "pubsub-js";
 import switchDOM from "./modules/switchDOM";
 import inputDOM from "./modules/inputDOM";
 import apiFunction from "./modules/data";
-//import utils from "./modules/utils";
-// import testing from "./modules/test";
+import CurrentWeatherDisplay from "./modules/currentWeatherDisplay";
+import CurrentWeatherDisplayExtra from "./modules/currentWeatherDisplayExtra";
+import DailyDisplay from "./modules/dailyDisplay";
 
 async function main() {
   await apiFunction.parseData("FIRST", "Singapore");
@@ -16,7 +17,7 @@ async function main() {
 
   const TOPIC = "get-input";
 
-  PubSub.subscribe(TOPIC, helperFunction);
+  PubSub.subscribe(TOPIC, getNewWeather);
 
   const switchBtn = new switchDOM();
   switchBtn.linkEvent();
@@ -24,9 +25,14 @@ async function main() {
   inputDom.linkEvent();
 }
 
-async function helperFunction(msg: string, name: string) {
+async function getNewWeather(msg: string, name: string) {
   await apiFunction.parseData(msg, name);
-  apiFunction.getWeatherDataParsed();
+  const currentWeatherDisplay = new CurrentWeatherDisplay(name, apiFunction.getWeatherDataParsed().current);
+  currentWeatherDisplay.render();
+  const currentWeatherDisplayExtra = new CurrentWeatherDisplayExtra(apiFunction.getWeatherDataParsed().current);
+  currentWeatherDisplayExtra.render();
+  const dailyDisplay = new DailyDisplay(apiFunction.getWeatherDataParsed().daily);
+  dailyDisplay.render();
 }
 
 main();

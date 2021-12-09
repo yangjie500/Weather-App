@@ -5,6 +5,8 @@ import utils from "./utils";
 
 interface CurrentData {
   dt: number;
+  max: number;
+  min: number;
   weather: {
     main: string;
   }[];
@@ -74,6 +76,26 @@ const apiFunction = () => {
   let final: CombinedWeatherData;
   let dailyDataArray: DailyParsed[] = [];
   let hourlyDataArray: HourlyParsed[] = [];
+
+  // const fetchWeatherToday = async (countryName: string) => {
+  //   try {
+  //     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${countryName}&appid=${process.env.API_KEY}&units=metric`, {
+  //       mode: "cors"
+  //     });
+
+  //     const json = await response.json();
+  //     console.log(json);
+  //     return {
+  //       max: json.main.temp_max,
+  //       min: json.main.temp_min
+  //     };
+  //   } catch (error) {
+  //     return {
+  //       max: 0,
+  //       min: 0
+  //     };
+  //   }
+  // };
 
   const fetchWeatherData = async (countryName: string) => {
     try {

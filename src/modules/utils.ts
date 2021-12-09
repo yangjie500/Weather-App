@@ -12,9 +12,21 @@ function utils() {
     return day;
   };
 
+  const roundToOneDecimal = (num: number) => {
+    const multiplier = Math.pow(10, 1); // One precision
+    return Math.round(num * multiplier) / multiplier;
+  };
+
+  const getExactHour = (dt: number): string => {
+    const timing = format(fromUnixTime(dt), "K:mb");
+    return timing;
+  };
+
   return {
     getHour,
-    getDay
+    getDay,
+    getExactHour,
+    roundToOneDecimal
   };
 }
 

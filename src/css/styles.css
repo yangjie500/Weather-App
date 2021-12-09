@@ -120,6 +120,11 @@
   border: solid 1px black;
 }
 
+.daily-forecast > .daily > img {
+  width: 80%;
+  height: 50%;
+}
+
 /* today-description */
 .today-description {
   display: grid;
@@ -128,3 +133,15 @@
 
   border: solid 1px black;
 }
+
+.feels-like > span,
+.feels-like > .num {
+  display: inline-block;
+}
+
+.feels-like > .num {
+  vertical-align: middle;
+  height: 10px;
+  padding-right: 2px;
+}
+
