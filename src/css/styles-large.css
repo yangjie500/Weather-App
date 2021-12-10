@@ -28,7 +28,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 3fr 1fr;
     height: 80%;
-
+    position: relative;
   }
 
   .large-screen-btn-container {
@@ -42,8 +42,14 @@
 
   .hourly-forecast,
   .daily-forecast {
+    width: 100%;
     position: absolute;
     visibility: hidden;
+    height: 15em;
+  }
+
+  .hourly-forecast {
+    padding-top: 2em;
   }
 
   .hourly-forecast.activated{
@@ -62,7 +68,11 @@
 
   /* Hourly forecast */
   .hourly-forecast::-webkit-scrollbar {
-    display:unset;
+    display: initial;
+  }
+
+  .hourly-forecast::-webkit-scrollbar-thumb {
+    background-color: khaki ;
   }
 
   /* daily forecast format */
@@ -76,14 +86,18 @@
     display: flex;
     flex-direction: column;
     flex: auto;
+    padding: .5em;
+  }
 
+  .daily-forecast > .daily > img {
+    width: min(160px, calc(60% + 4vw));
+    height: 60%;
   }
 
   /* Button to switch between daily and hourly */
-  .large-screen-btn-switch {
+  .large-screen-switch {
     position: absolute;
-    
+    padding: 1em;
   }
-
 
 }

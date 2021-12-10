@@ -77,26 +77,6 @@ const apiFunction = () => {
   let dailyDataArray: DailyParsed[] = [];
   let hourlyDataArray: HourlyParsed[] = [];
 
-  // const fetchWeatherToday = async (countryName: string) => {
-  //   try {
-  //     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${countryName}&appid=${process.env.API_KEY}&units=metric`, {
-  //       mode: "cors"
-  //     });
-
-  //     const json = await response.json();
-  //     console.log(json);
-  //     return {
-  //       max: json.main.temp_max,
-  //       min: json.main.temp_min
-  //     };
-  //   } catch (error) {
-  //     return {
-  //       max: 0,
-  //       min: 0
-  //     };
-  //   }
-  // };
-
   const fetchWeatherData = async (countryName: string) => {
     try {
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${countryName}&appid=${process.env.API_KEY}&units=metric`, {
@@ -117,7 +97,7 @@ const apiFunction = () => {
       const json1: Response = await response1.json();
       return json1;
     } catch (error) {
-      console.log(error);
+      return false;
     }
   };
 
@@ -163,12 +143,12 @@ const apiFunction = () => {
     hourlyDataArray = [];
 
     let weatherData: Response;
-    const fetchData: Response | void = await fetchWeatherData(countryName);
+    const fetchData: Response | boolean = await fetchWeatherData(countryName);
 
     if (fetchData) {
       weatherData = fetchData;
     } else {
-      return; // Function to ask User to re-input their country name
+      return false; // Function to ask User to re-input their country name
     }
 
     getCurrentData(weatherData); // in Object
@@ -182,6 +162,7 @@ const apiFunction = () => {
     };
 
     setWeatherDataParsed(newWeatherDataParsed);
+    return true;
   };
 
   const setWeatherDataParsed = (newWeatherDataParsed: CombinedWeatherData): void => {

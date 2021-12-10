@@ -1,5 +1,6 @@
 :root {
   box-sizing: border-box;
+  background-color: lavender;
 }
 
 *,
@@ -14,7 +15,6 @@
   flex-direction: column;
   align-items: center;
 
-  border : solid 1px black;
 }
 
 .nav > form {
@@ -30,6 +30,11 @@
   border: none;
 }
 
+.error-message {
+  display:inline-block;
+  width: 100%;
+}
+
 /* Main Content */
 .curr-weather {
   display: flex;
@@ -37,7 +42,6 @@
   align-items: center;
   padding: 1em;
 
-  border: solid 1px black;
 }
 
 .main__weather,
@@ -88,7 +92,6 @@
   flex-wrap: nowrap;
   overflow-x: auto;
 
-  border: solid 1px black;
 }
 
 .hourly-forecast::-webkit-scrollbar {
@@ -102,7 +105,17 @@
   padding: 1em;
   flex: 0 0 auto;
 
-  border: solid 1px black;
+}
+
+.hourly-temp {
+  display: flex;
+  padding: .2em;
+  height: 30px;
+  gap: 1px;
+}
+
+.hourly-temp > div {
+  align-self: flex-end;
 }
 
 /* Daily forecast */
@@ -110,28 +123,49 @@
   display: flex;
   flex-direction: column;
 
-  border: solid 1px black;
 }
 
 .daily {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 
-  border: solid 1px black;
 }
 
 .daily-forecast > .daily > img {
-  width: 80%;
-  height: 50%;
+  width: 15%;
+  height: 15%;
+}
+
+.daily-high,
+.daily-low {
+  display: flex;
+  height: 30px;
+  gap: 2px;
+}
+
+.daily-high > span,
+.daily-low > span {
+  align-self: flex-start;
+}
+
+.daily-high > div,
+.daily-low > div {
+  align-self: center;
 }
 
 /* today-description */
 .today-description {
+  padding: 1em;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: 5em;
 
-  border: solid 1px black;
+}
+
+.today-description .name {
+  font-size: 1.4em;
+  padding-block: .3em;
 }
 
 .feels-like > span,

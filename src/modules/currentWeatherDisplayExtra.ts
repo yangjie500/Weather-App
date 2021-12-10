@@ -44,9 +44,7 @@ export default class CurrentWeatherDisplayExtra {
   }
 
   render() {
-    console.log(this.detailsDIV.length);
     for (let i = 0; i < this.detailsDIV.length; i++) {
-      console.log("hello");
       this.detailsDIV[i].textContent = this.container[i];
     }
   }
